@@ -9,6 +9,7 @@ This project involves deploying a machine learning model for diabetes prediction
 ## Steps
 * Exploratory Data Analysis
 * Machine Learning Modelling using XGBoost
+* Deployment using Flask
 
 ## Outcome
 You can watch demo of the app here: https://drive.google.com/file/d/13LDuhDeiU-d1IsUVgyVlOh_7tdjnMrFo/view?usp=drive_link
