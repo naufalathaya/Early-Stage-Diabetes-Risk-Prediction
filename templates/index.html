@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+            display: block;
+        }
+        select, button, input[type="number"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: calc(100% - 22px); /* Adjusted width to fit container */
+            box-sizing: border-box;
+            font-size: 16px;
+            outline: none;
+        }
+        select:hover, button:hover, input[type="number"]:hover {
+            background-color: #f9f9f9;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .prediction {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .description {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Early Stage Diabetes Risk Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="age">Age:</label>
+            <div class="description">Enter your age in years.</div>
+            <input type="number" id="age" name="age" placeholder="Enter age" required><br>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="" disabled selected>Select gender</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select><br>
+
+            <label for="polyuria">Polyuria:</label>
+            <div class="description">Polyuria is a condition where the body urinates more than usual and passes excessive or abnormally large amounts of urine each time you urinate</div>
+            <select id="polyuria" name="polyuria" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="polydipsia">Polydipsia:</label>
+            <div class="description">Polydipsia is the medical definition of excessive thirst. Excess thirst is an abnormal urge to drink fluids at all times. It's a reaction to fluid loss in your body</div>
+            <select id="polydipsia" name="polydipsia" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="sudden_weight_loss">Sudden Weight Loss:</label>
+            <select id="sudden_weight_loss" name="sudden_weight_loss" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="weakness">Weakness:</label>
+            <select id="weakness" name="weakness" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="polyphagia">Polyphagia:</label>
+            <div class="description">Polyphagia is a medical term describing excessive hunger or appetite. It also leads to a strong drive for overeating. People with polyphagia may not feel full after eating a large amount of food</div>
+            <select id="polyphagia" name="polyphagia" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="genital_thrush">Genital Thrush:</label>
+            <select id="genital_thrush" name="genital_thrush" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="visual_blurring">Visual Blurring:</label>
+            <select id="visual_blurring" name="visual_blurring" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="itching">Itching:</label>
+            <select id="itching" name="itching" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="irritability">Irritability:</label>
+            <select id="irritability" name="irritability" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="delayed_healing">Delayed Healing:</label>
+            <select id="delayed_healing" name="delayed_healing" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="partial_paresis">Partial Paresis:</label>
+            <div class="description">Paresis describes weakness or partial paralysis</div>
+            <select id="partial_paresis" name="partial_paresis" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="muscle_stiffness">Muscle Stiffness:</label>
+            <select id="muscle_stiffness" name="muscle_stiffness" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="alopecia">Alopecia:</label>
+            <div class="description">Alopecia happens when the immune system attacks hair follicles and causes hair loss</div>
+            <select id="alopecia" name="alopecia" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="obesity">Obesity:</label>
+            <div class="description">Obesity is abnormal or excessive fat accumulation that presents a risk to health</div>
+            <select id="obesity" name="obesity" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <button type="submit">Predict</button>
+        </form>
+        
+        <div class="prediction">
+            {% if prediction is defined %}
+                Prediction: {{ prediction }}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
